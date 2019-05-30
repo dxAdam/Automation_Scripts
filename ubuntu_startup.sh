@@ -1,8 +1,8 @@
-#apt update &&
-#apt upgrade &&
+apt update &&
+apt upgrade &&
 
-#apt install vim
-#apt install gnome-tweaks
+apt install vim
+apt install gnome-tweaks
 
 
 

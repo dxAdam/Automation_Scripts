@@ -2,15 +2,15 @@
 
 
 ## Instructions
-After installing Ubuntu install git with 
+After installing Ubuntu install git with  
 	`sudo apt install git`
-and clone repo with
+and clone repo with  
 	`git clone https://github.com/dxadam/util`
 
-Run
+Run  
 	`sudo ./ubuntu_startup.sh`
 
-Reboot the system and then run
+Reboot the system and then run  
 	`sudo ./after_install.sh`
 
 ### ubuntu_startup.sh

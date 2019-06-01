@@ -47,7 +47,7 @@ case "$choice" in
        cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - &&
        gnome-terminal -e ~/.dropbox-dist/dropboxd
        touch /etc/rc.local
-       bash -c "echo "~/.dropbox-dist/dropboxd" >> /etc/rc.local"
+       bash -c "echo "/home/$USER/.dropbox-dist/dropboxd" >> /etc/rc.local"
        chmod +x /etc/rc.local;;
 esac
 
@@ -59,11 +59,14 @@ case "$choice" in
   y|Y ) add-apt-repository ppa:graphics-drivers/ppa &&
 	apt install libnvidia-cfg1-430 &&
 	ubuntu-drivers autoinstall &&
-	apt install flatpak &&
+	
+	# graphics drivers are now installed, the lines below install a tool called "GreenWithEnvy" that allows monitoring/overclocking of the GPU. 
+        apt install flatpak &&
 	apt install gnome-software-plugin-flatpak &&
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
+        flatpak update &&
 	flatpak install flathub com.leinardi.gwe &&
-	flatpak update
-  	apt install vulkan vulkan-utils;;
+        ;;
 esac
 
 
@@ -74,13 +77,16 @@ case "$choice" in
  y|Y ) echo -e "\n\n--installing steam\n\n"
        dpkg --add-architecture i386
        apt update
+       apt upgrade
        apt install wget gdebi-core libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
        wget http://media.steampowered.com/client/installer/steam.deb
        gdebi steam.deb;;
 esac
 
 
-
+#
+# Wine is "Wine Is not an Emulator" and is used to run Windows applications on Linux
+#
 echo -e "\n\n"
 read -p "--install Wine? (y/n)? : " choice
 case "$choice" in
@@ -89,17 +95,23 @@ case "$choice" in
 esac
 
 
-
+#
+# Vulkan is graphics API 
+#
 echo -e "\n\n"
 read -p "--install Vulkan? (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Vulkan\n\n"
-       apt install libvulkan1 libvulkan1:i386;;                     # nvidia
+       apt install vulkan-utils
+       apt install libvulkan1 libvulkan1:i386                       # nvidia
        #apt install mesa-vulkan-drivers mesa-vulkan-drivers:i386    # amd/intel
+       ;;
 esac
 
 
-
+#
+# Lutris is used to install Starcraft and other games
+#
 echo -e "\n\n"
 read -p "--install Lutris? (y/n)? : " choice
 case "$choice" in
@@ -112,7 +124,7 @@ case "$choice" in
 esac
 
 
-
-
+apt update
+apt upgrade
 apt autoremove
 

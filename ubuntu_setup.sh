@@ -91,7 +91,7 @@ echo -e "\n\n"
 read -p "--install Wine? (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Wine\n\n"
-       support/install_wine.sh;;
+       sudo support/install_wine.sh;;
 esac
 
 

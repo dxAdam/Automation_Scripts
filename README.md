@@ -3,7 +3,7 @@
 
 ## Instructions
 After installing Ubuntu install git with  
-	`sudo apt install git`
+	`sudo apt install git`  
 and clone repo with  
 	`git clone https://github.com/dxadam/util`
 

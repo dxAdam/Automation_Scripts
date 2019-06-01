@@ -15,7 +15,7 @@ echo -e "\n\n--installing vim\n\n"
 apt install vim
 
 
-echo -e "\n\n--installing mdadm\n\n" #for RAID1
+echo -e "\n\n--installing mdadm\n\n" #to show Linux RAIDs
 apt install mdadm
 
 
@@ -27,7 +27,7 @@ echo -e "\n\n--installing caffeine\n\n"
 apt-get install caffeine
 
 
-echo -e "\n\n--installing net-tools (ifconfig)\n\n"
+echo -e "\n\n--installing net-tools\n\n" 
 apt-get install net-tools
 
 

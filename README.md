@@ -2,15 +2,15 @@
 #### This repo contains scripts for setting up a new install of Ubuntu 18.04/18.10/19.04 with common applications and configurations I use, as well as scripts automating frquently performed actions. 
 
 ## Instructions
-After installing Ubuntu install git with  
+1. After installing Ubuntu install git with  
 	`sudo apt install git`  
 and clone repo with  
 	`git clone https://github.com/dxadam/util`
 
-Run  
+2. Run  
 	`sudo ./ubuntu_setup.sh`
 
-Reboot the system and then run  
+3. Reboot the system and then run  
 	`sudo ./after_install.sh`
 
 ### ubuntu_setup.sh

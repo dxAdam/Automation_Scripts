@@ -27,8 +27,16 @@ echo -e "\n\n--installing caffeine\n\n"
 apt-get install caffeine
 
 
+echo -e "\n\n--installing psensor\n\n" 
+apt-get install psensor
+
+
 echo -e "\n\n--installing net-tools\n\n" 
 apt-get install net-tools
+
+
+echo -e "\n\n--installing htop\n\n" 
+apt-get install htop
 
 
 echo -e "\n\n--installing discord\n\n"

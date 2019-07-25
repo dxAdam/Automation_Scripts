@@ -44,9 +44,10 @@ echo -e "\n\n--installing discord\n\n"
 snap install discord
 
 
-echo -e "\n\n--installing cpufreq gnome extenstion\n\n"
-support/install_cpufreq.sh
-
+echo -e "\n\n--installing grub-customizer\n\n"
+add-apt-repository ppa:danielrichter2007/grub-customizer
+apt-get update
+apt-get install grub-customizer
 
 
 echo -e "\n\n"

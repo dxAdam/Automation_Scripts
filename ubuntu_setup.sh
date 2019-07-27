@@ -1,77 +1,200 @@
 #!/bin/bash
+#
+# script: ubuntu_setup.sh
+#    
+#  Runs on a new Ubuntu installation to install and configure
+#  desired software. Designed around Ubuntu Desktop 18.04 LTS but should
+#  work with 18.10 and 19.04 as well. 
+#
+# author: Adam Grusky
+#
+# date: July 2019
+#
+# usage:  
+#
+#  ubuntu_setup.sh can be run as a script by first making it executable with
+#
+# 	sudo chmod +x ubuntu_setup.sh
+#
+#  and then executing with
+#
+# 	sudo ./ubuntu_setup.sh
+#
+# notes:
+#
+#  This script installs applications, packages, and tools that I typically
+#  use on a new Ubuntu Desktop installation. Some of the more system
+#  specific installations (graphics drivers and gaming related apps/packages)
+#  ask the user if they would like to install or not, but most will install 
+#  by default.
+#
+#
+#
+#  This script can easily be modified by removing (comment out with "#") or
+#  adding lines for desired configurations and installations
+#
+#  
+#
+#  Alternatively the commands of this script can be manually executed line by
+#  line in a terminal allowing greater visibility to what each individual
+#  command does and returns - useful for troubleshooting or learning purposes 
+#
+#
+#
+#  AMD/Nvidia GPU note: currently only the option to install Nvidia GPU drivers
+#  exists in the script because it is the same across Ubuntu 18.04, 18.10, 
+#  and 19.04. I do not have an AMD GPU to test with, but Ubuntu 18.04 LTS has
+#  the AMD open source drivers installed by default. 
+# 
+#
 
+
+
+
+#
+# Checks if this script was ran as root
+#
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root\n\n Hint: use "sudo !!" to run a previously entered command with root priveleges\n\n" 
    exit 1
 fi
 
 
 
+#
+# update currently installed packages
+#
 echo -e "\n\n--checking for updates\n\n"
 apt update &&
 apt upgrade &&
 
 
+
+#
+# Vim is a lightweight, configurable text editor 
+#
 echo -e "\n\n--installing vim\n\n"
 apt install vim
 
 
-echo -e "\n\n--installing mdadm\n\n" #to show Linux RAIDs
+
+#
+# mdadm is a Linux utility used to manage and monitor software RAID devices (and allows them to be detected by file managers) 
+#
+echo -e "\n\n--installing mdadm\n\n"
 apt install mdadm
 
 
+
+#
+# GNOME Tweaks allows further customization of the Gnome environment (only
+#  useful if using GNOME desktop environment)
+#
 echo -e "\n\n--installing gnome-tweaks\n\n"
 apt install gnome-tweaks
 
 
-echo -e "\n\n--installing caffeine\n\n"
+
+#
+# Caffeine prevents the system from sleeping and its displays from turning off
+#  (useful if listening to music or monitoring a web page etc..) 
+#
+echo -e "\n\n--installing caffeine\n\n" 
 apt-get install caffeine
 
 
-echo -e "\n\n--installing psensor\n\n" 
+
+#
+# Psensor displays different hardware sensor readings
+#
+echo -e "\n\n--installing psensor\n\n"
 apt-get install psensor
 
 
-echo -e "\n\n--installing net-tools\n\n" 
+
+#
+# net-tools allows the use of networking information commands like "ifconfig"
+#
+echo -e "\n\n--installing net-tools\n\n"
 apt-get install net-tools
 
 
-echo -e "\n\n--installing htop\n\n" 
+
+#
+# htop shows system resources and processes in a terminal environment
+#
+echo -e "\n\n--installing htop\n\n"
 apt-get install htop
 
 
+
+#
+# Discord is a popular voice/chat application
+#
 echo -e "\n\n--installing discord\n\n"
 snap install discord
 
 
+
+#
+# grub-customizer allows customization of the GNU GRUB boot loader
+#  (useful when multiple bootable partitions exist on a disk)
+#
 echo -e "\n\n--installing grub-customizer\n\n"
 add-apt-repository ppa:danielrichter2007/grub-customizer
 apt-get update
 apt-get install grub-customizer
 
 
+
+#
+# Dropbox is a cloud storage platform
+#
 echo -e "\n\n"
-read -p "--install Dropbox? (y/n)? : " choice
+read -p "--install Dropbox? (y/n)? : " choice 
 case "$choice" in
  y|Y ) echo -e "\n\n--installing dropbox\n\n"
        cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - &&
        gnome-terminal -e ~/.dropbox-dist/dropboxd
        touch /etc/rc.local
-       bash -c "echo "/home/$USER/.dropbox-dist/dropboxd" >> /etc/rc.local"
+       bash -c "echo "/home/$USER/.dropbox-dist/dropboxd" >> /etc/rc.local" # configures to start service on boot
        chmod +x /etc/rc.local;;
 esac
 
 
 
+#
+# Nvidia GPU drivers are needed in systems that contain Nvidia discrete 
+#  graphics hardware (AMD driver installation coming soon - more notes at top
+#  of script)
+#
 echo -e "\n\n"
-read -p "--install Nvidia drivers? (y/n)? : " choice
+read -p "--install Nvidia GPU drivers? (y/n)? : " choice
 case "$choice" in 
   y|Y ) add-apt-repository ppa:graphics-drivers/ppa &&
-	apt install libnvidia-cfg1-430 &&
-	ubuntu-drivers autoinstall &&
-	
-	# graphics drivers are now installed, the lines below install a tool called "GreenWithEnvy" that allows monitoring/overclocking of the GPU. 
-        apt install flatpak &&
+	ubuntu-drivers autoinstall && # installs recommended nvidia drivers for detected hardware
+
+	# detected hardware and recommended drivers can be displayed with 
+        # the "ubuntu-drivers devices" command
+
+	# to install a specific driver version run
+	#   sudo apt install nvidia-driver-XXX
+        # where XXX is the desired version number
+
+	# example:
+	#   sudo apt install nvidia-driver-430
+        # (run this instead of "ubuntu-drivers autoinstall")
+
+	# the lines below install a tool called "GreenWithEnvy" that allows
+	# monitoring/overclocking of the GPU. Some features require Nvidia 
+	# "coolbits" to be set which is done in the "after_reboot.sh" script
+
+	# The Github repo includes a script named "gwe.sh" to launch 
+	# GreenWithEnvy (remember to make executable with 
+	#  sudo chmod +x gwe.sh
+	# )	
+        
+	apt install flatpak && # flatpak is used to install GWE
 	apt install gnome-software-plugin-flatpak &&
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
         flatpak update &&
@@ -81,6 +204,9 @@ esac
 
 
 
+#
+# Steam is a video game distribution platform
+#
 echo -e "\n\n"
 read -p "--install Steam? (y/n)? : " choice
 case "$choice" in
@@ -94,8 +220,9 @@ case "$choice" in
 esac
 
 
+
 #
-# Wine is "Wine Is not an Emulator" and is used to run Windows applications on Linux
+# WINE is a compatibility layer often used to run Windows applications
 #
 echo -e "\n\n"
 read -p "--install Wine? (y/n)? : " choice
@@ -105,11 +232,12 @@ case "$choice" in
 esac
 
 
+
 #
-# Vulkan is graphics API 
+# Vulkan is a graphics API used by many different games
 #
 echo -e "\n\n"
-read -p "--install Vulkan? (y/n)? : " choice
+read -p "--install Vulkan? (required for some games) (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Vulkan\n\n"
        apt install vulkan-utils
@@ -119,8 +247,9 @@ case "$choice" in
 esac
 
 
+
 #
-# Lutris is used to install Starcraft and other games
+# Lutris is used to install different games and gaming applications like Battle.net and Origin
 #
 echo -e "\n\n"
 read -p "--install Lutris? (y/n)? : " choice
@@ -134,6 +263,7 @@ case "$choice" in
 esac
 
 
+
 apt update
 apt upgrade
-apt autoremove
+apt autoremove # removes dependencies no longer needed

@@ -7,10 +7,14 @@
 and clone repo with  
 	`git clone https://github.com/dxadam/util`
 
-2. Run  
+2. Make Executable with
+	'sudo chmod +x ubuntu_setup.sh'
+
+
+3. Run  
 	`sudo ./ubuntu_setup.sh`
 
-3. Reboot the system and then run  
+4. Reboot the system and run  
 	`sudo ./after_install.sh`
 
 ### ubuntu_setup.sh

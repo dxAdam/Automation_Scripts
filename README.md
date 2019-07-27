@@ -7,14 +7,14 @@
 and clone repo with  
 	`git clone https://github.com/dxadam/util`
 
-2. Make scripts executable with 
+2. Make scripts executable with  
 	`sudo chmod +x ubuntu_setup.sh`
 	`sudo chmod +x after_reboot.sh`
 
 3. Run  
 	`sudo ./ubuntu_setup.sh`
 
-4. Reboot and run 
+4. Reboot and run  
 	`sudo ./after_reboot.sh`
 
 ### ubuntu_setup.sh

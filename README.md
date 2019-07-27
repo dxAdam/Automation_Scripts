@@ -7,15 +7,15 @@
 and clone repo with  
 	`git clone https://github.com/dxadam/util`
 
-2. Make Executable with
-	'sudo chmod +x ubuntu_setup.sh'
-
+2. Make scripts executable with
+	`sudo chmod +x ubuntu_setup.sh`
+	`sudo chmod +x after_reboot.sh`
 
 3. Run  
 	`sudo ./ubuntu_setup.sh`
 
-4. Reboot the system and run  
-	`sudo ./after_install.sh`
+4. Reboot and run
+	`sudo ./after_reboot.sh`
 
 ### ubuntu_setup.sh
 Sets up a new install of Ubuntu Desktop 18.04/18.10/19.04 with desired applications and configurations

@@ -55,7 +55,7 @@
 # Checks if this script was ran as root
 #
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root\n\n Hint: use "sudo !!" to run a previously entered command with root priveleges\n\n" 
+   echo -e "This script must be run as root!\nhint: use 'sudo !!' to run a previously entered command with root priveleges" 
    exit 1
 fi
 
@@ -86,7 +86,6 @@ apt install mdadm
 
 
 
-#
 # GNOME Tweaks allows further customization of the Gnome environment (only
 #  useful if using GNOME desktop environment)
 #
@@ -172,6 +171,7 @@ echo -e "\n\n"
 read -p "--install Nvidia GPU drivers? (y/n)? : " choice
 case "$choice" in 
   y|Y ) add-apt-repository ppa:graphics-drivers/ppa &&
+	apt purge --autoremove '*nvidia*' && 
 	ubuntu-drivers autoinstall && # installs recommended nvidia drivers for detected hardware
 
 	# detected hardware and recommended drivers can be displayed with 
@@ -198,8 +198,7 @@ case "$choice" in
 	apt install gnome-software-plugin-flatpak &&
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
         flatpak update &&
-	flatpak install flathub com.leinardi.gwe &&
-        ;;
+	flatpak install flathub com.leinardi.gwe;;
 esac
 
 
@@ -267,3 +266,7 @@ esac
 apt update
 apt upgrade
 apt autoremove # removes dependencies no longer needed
+
+
+
+exit 1

@@ -11,10 +11,12 @@
 # Now set the desired device as default with
 pactl set-default-sink 0
 
+# To make this permanent change the line '#set-default-sink output' to
+#   'set-default-sink output 0' in /etc/pulse/default.pa
+sudo sed -i -- 's/#set-default-sink output/set-default-sink output 0/g' /etc/pulse/default.pa
 
 # Now I like to set the volume low with 
 pacmd set-sink-volume 0 15000 # 0 is the device number from the list above and 15000 is volume level out of 512000
-
 
 
 # finally I like to assign this script to a keyboard shortcut such as Ctrl+Shift+S in the ubuntu keyboard shortcuts

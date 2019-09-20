@@ -86,6 +86,14 @@ apt install mdadm
 
 
 
+#
+# exfat-utils gives support for exFAT formatted storage (typical of flash drives over 32GB)
+#
+echo -e "\n\n--installing exfat-utils\n\n"
+apt install exfat-utils
+
+
+
 # GNOME Tweaks allows further customization of the Gnome environment (only
 #  useful if using GNOME desktop environment)
 #

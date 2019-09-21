@@ -7,18 +7,14 @@
 and clone repo with  
 	`git clone https://github.com/dxadam/util`
 
-2. Make scripts executable with  
-	`sudo chmod +x ubuntu_setup.sh`  
-	`sudo chmod +x after_reboot.sh`
-
-3. Run  
+2. Run  
 	`sudo ./ubuntu_setup.sh`
 
-4. Reboot and run  
+3. Reboot and run  
 	`sudo ./after_reboot.sh`
 
 ### ubuntu_setup.sh
-Run on Ubuntu Desktop 18.04/18.10/19.04 to install desired applications and configurations
+Runs on Ubuntu Desktop 18.04/18.10/19.04 to install desired applications and configurations
 
 ### after_reboot.sh
 Contains additional commands that must be run after a system reboot

@@ -3,12 +3,12 @@
 
 ## Instructions
 1. After installing Ubuntu install git with  
-	`sudo apt install git` 
+	`sudo apt install git`   
 and clone repo with  
 	`git clone https://github.com/dxadam/Automation_Scripts`
 
 2. Run  
-        `cd Automation_Scripts`
+        `cd Automation_Scripts`  
 	`sudo ./ubuntu_setup.sh`
 
 3. Reboot and run  

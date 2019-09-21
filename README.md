@@ -4,7 +4,7 @@
 ## Instructions
 1. After installing Ubuntu install git with  
 	`sudo apt install git`   
-clone and enter repo with  
+then clone and enter repo with  
 	`git clone https://github.com/dxadam/Automation_Scripts && cd Automation_Scripts`
 
 2. Run  

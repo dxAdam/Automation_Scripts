@@ -12,11 +12,12 @@
 #
 # usage:  
 #
-#  ubuntu_setup.sh can be run as a script by first making it executable with
+#  ubuntu_setup.sh can be run as a script. You may need to make it executable 
+#  with
+#  
+#       sudo chmod +x ubuntu_setup.sh
 #
-# 	sudo chmod +x ubuntu_setup.sh
-#
-#  and then executing with
+#  and then execute with
 #
 # 	sudo ./ubuntu_setup.sh
 #

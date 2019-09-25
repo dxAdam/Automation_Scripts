@@ -31,4 +31,4 @@ echo 'export PATH=/opt/pgi/linux86-64/'$VERSION'/bin:$PATH' >> /home/$USER/.bash
 
 # source ~/.bashrc must be ran outside of this shell session to work
 echo -e "\n\nPGI installed\n\nRun\n\tsource /home/$USER/.bashrc\n\nto load PATH."
-echo -e "\n\nTest by checking compiler version with\n\tnvcc --version\n"
+echo -e "\n\nTest by checking compiler version with\n\tpgcc --version\n"

@@ -73,9 +73,9 @@ case "$choice" in
 
        echo 'export LD_LIBRARY_PATH=$LD_LIBRARY/usr/local/cuda-10.1/lib64' >> ~/.bashrc
        
-       # we run 'exec bash' at end of script to reload .bashrc
+
+# source ~/.bashrc must be ran outside of this shell session to work
+echo -e "\n\nCUDA installed\n\nRun\n\tsource /home/$USER/.bashrc\n\nto load PATH."
+echo -e "\n\nTest by checking compiler version with\n\tnvcc --version\n"
+
 esac
-
-
-# reload .bashrc
-exec bash

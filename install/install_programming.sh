@@ -55,7 +55,27 @@ case "$choice" in
 esac
 
 
+#
+# CUDA is Nvidia's parallel computing platform for their GPUs
+#
+echo -e "\n\n"
+read -p "--install CUDA? (3Gb+) (requires compatible GPU) (y/n)? : " choice
+case "$choice" in
+ y|Y ) echo -e "\n\n--installing CUDA\n\n"
+       wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin &&
+       sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 &&
+       sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 &&
+       sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" &&
+       sudo apt-get update
+       sudo apt-get -y install cuda &&
+ 
+       echo 'export PATH=$PATH:/usr/local/cuda-10.1/bin:/usr/local/cuda-10.1/NsightCompute-2019.1' >> ~/.bashrc
 
-#
-# more to come
-#
+       echo 'export LD_LIBRARY_PATH=$LD_LIBRARY/usr/local/cuda-10.1/lib64' >> ~/.bashrc
+       
+       # we run 'exec bash' at end of script to reload .bashrc
+esac
+
+
+# reload .bashrc
+exec bash

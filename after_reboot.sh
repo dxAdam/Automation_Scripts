@@ -9,7 +9,7 @@
 
 # enable overclocking / fan control of GPU ... additional reboot required to take effect
 flatpak update &&
-nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
+sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
 
 
 /home/$USER/.dropbox-disk/dropboxd

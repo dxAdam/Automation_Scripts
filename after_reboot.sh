@@ -11,4 +11,7 @@
 flatpak update &&
 nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
 
+
+/home/$USER/.dropbox-disk/dropboxd
+
 exit 1

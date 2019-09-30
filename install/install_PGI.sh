@@ -16,14 +16,14 @@
 #    ./install_PGI.sh
 #
 
-#cd $DLPATH
-#mkdir pgilinux &&
-#mv pgilinux*.tar.gz pgilinux &&
-#cd pgilinux
+cd $DLPATH
+mkdir pgilinux &&
+mv pgilinux*.tar.gz pgilinux &&
+cd pgilinux
 
-#tar xpfz pgilinux*.tar.gz &&
+tar xpfz pgilinux*.tar.gz &&
 
-#sudo ./install
+sudo ./install
 
 
 echo 'export PGI=/opt/pgi' >> /home/$USER/.bashrc

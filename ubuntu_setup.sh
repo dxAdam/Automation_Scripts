@@ -163,7 +163,7 @@ read -p "--install Dropbox? (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\n--installing dropbox\n\n"
        cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - &&
-       gnome-terminal -e ~/.dropbox-dist/dropboxd
+       # we need to run     ~/dropbox-dist/dropboxd   in another terminal   -- will do in after_reboot.sh
        touch /etc/rc.local
        bash -c "echo "/home/$USER/.dropbox-dist/dropboxd" >> /etc/rc.local" # configures to start service on boot
        chmod +x /etc/rc.local;;

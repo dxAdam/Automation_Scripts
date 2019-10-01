@@ -39,7 +39,8 @@ echo -e "\n\n"
 read -p "--install openmpi (MPI)? (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\n--installing openmpi\n\n"
-       sudo apt install openmpi-bin
+       sudo apt install openmpi-bin &&
+       sudo apt install libopenmpi-bin
 esac
 
 

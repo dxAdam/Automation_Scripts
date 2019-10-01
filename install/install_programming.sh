@@ -39,7 +39,7 @@ echo -e "\n\n"
 read -p "--install openmpi (MPI)? (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\n--installing openmpi\n\n"
-       sudo apt install openmpi-bin &&
+       sudo apt install openmpi-bin
 esac
 
 
@@ -51,7 +51,7 @@ echo -e "\n\n"
 read -p "--install Paraview (~640Mb) (y/n)? : " choice
 case "$choice" in
  y|Y ) echo -e "\n\n--installing Paraview\n\n"
-       sudo apt install paraview &&
+       sudo apt install paraview
 esac
 
 
@@ -64,7 +64,7 @@ case "$choice" in
  y|Y ) echo -e "\n\n--installing CUDA\n\n"
        wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin &&
        sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 &&
-       sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 &&
+       sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub &&
        sudo add-apt-repository "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" &&
        sudo apt-get update
        sudo apt-get -y install cuda &&
@@ -75,7 +75,7 @@ case "$choice" in
        
 
 # source ~/.bashrc must be ran outside of this shell session to work
-echo -e "\n\nCUDA installed\n\nRun\n\tsource /home/$USER/.bashrc\n\nto load PATH."
+echo -e "\n\nCUDA installed\n\nRun\n\tsource /home/\$USER/.bashrc\n\nto load PATH."
 echo -e "\n\nTest by checking compiler version with\n\tnvcc --version\n"
 
 esac

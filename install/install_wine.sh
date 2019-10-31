@@ -13,11 +13,14 @@ wget -nc https://dl.winehq.org/wine-builds/winehq.key
 apt-key add winehq.key
 
 #get codename (ex: disco, cosmic, etc)
-
 CODENAME=`lsb_release --codename | cut -f2`
+
+#get release (18.10, 19.04, etc)
+RELEASE=`lsb_release --release | cut -f2`
 
 apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ '$CODENAME' main'
 
+wget -O- -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_$RELEASE/Release.key | sudo apt-key add -
 
 apt update
 apt install --install-recommends winehq-staging

@@ -1,10 +1,11 @@
+#!/bin/bash
 #
 # Checks if this script was ran as root
 #
 
 if [[ $EUID -ne 0 ]]; then
-	echo -e "This script must be run as root!\nhint: use 'sudo !!' to run a previously entered command with root priveleges" 
-	exit 1
+   echo -e "This script must be run as root!\nhint: use 'sudo !!' to run a previously entered command with root priveleges" 
+   exit 1
 fi
 
 dpkg --add-architecture i386 

@@ -7,7 +7,6 @@ if [[ $EUID -ne 0 ]]; then
    echo -e "This script must be run as root!\nhint: use 'sudo !!' to run a previously entered command with root priveleges" 
    exit 1
 fi
-
 dpkg --add-architecture i386 
 wget -nc https://dl.winehq.org/wine-builds/winehq.key
 apt-key add winehq.key
@@ -17,6 +16,11 @@ CODENAME=`lsb_release --codename | cut -f2`
 
 #get release (18.10, 19.04, etc)
 RELEASE=`lsb_release --release | cut -f2`
+
+#install libfaudio0 if >=19.04
+if [ $RELEASE == "19.04" -o $RELEASE == "19.10" ]; then
+        dpkg -i --force-depends libfaudio0_19.11-0~disco_i386.deb;
+fi
 
 apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ '$CODENAME' main'
 

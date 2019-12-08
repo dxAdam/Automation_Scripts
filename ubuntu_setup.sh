@@ -159,7 +159,7 @@ apt-get install grub-customizer
 # Dropbox is a cloud storage platform
 #
 echo -e "\n\n"
-read -p "--install Dropbox? (y/n)? : " choice 
+read -p "--install Dropbox? (y/n): " choice 
 case "$choice" in
  y|Y ) echo -e "\n\n--installing dropbox\n\n"
        cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - &&
@@ -177,7 +177,7 @@ esac
 #  of script)
 #
 echo -e "\n\n"
-read -p "--install Nvidia GPU drivers? (y/n)? : " choice
+read -p "--install Nvidia GPU drivers? (y/n): " choice
 case "$choice" in 
   y|Y ) add-apt-repository ppa:graphics-drivers/ppa &&
 	apt purge --autoremove '*nvidia*' && 
@@ -216,7 +216,7 @@ esac
 # Steam is a video game distribution platform
 #
 echo -e "\n\n"
-read -p "--install Steam? (y/n)? : " choice
+read -p "--install Steam? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\n--installing steam\n\n"
        dpkg --add-architecture i386
@@ -233,7 +233,7 @@ esac
 # WINE is a compatibility layer often used to run Windows applications
 #
 echo -e "\n\n"
-read -p "--install Wine? (y/n)? : " choice
+read -p "--install Wine? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Wine\n\n"
        sudo support/install_wine.sh;;
@@ -245,7 +245,7 @@ esac
 # Vulkan is a graphics API used by many different games
 #
 echo -e "\n\n"
-read -p "--install Vulkan? (required for some games) (y/n)? : " choice
+read -p "--install Vulkan? (required for some games) (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Vulkan\n\n"
        apt install vulkan-utils
@@ -260,7 +260,7 @@ esac
 # Lutris is used to install different games and gaming applications like Battle.net and Origin
 #
 echo -e "\n\n"
-read -p "--install Lutris? (y/n)? : " choice
+read -p "--install Lutris? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Lutris\n\n"
        add-apt-repository ppa:lutris-team/lutris
@@ -271,6 +271,19 @@ case "$choice" in
 esac
 
 
+
+#
+# Retroarch is an is a manager for game system emulators and ROMs
+#
+echo -e "\n\n"
+read -p "--install Retroarch? (y/n): " choice
+case "$choice" in
+ y|Y ) echo -e "\n\ninstalling Retroarch\n\n"
+       apt install retroarch &&
+       mkdir ~/.config/retroarch/bios
+       7z x install/retroarch_bios_pack.zip -o /home/$USER/.config/retroarch/bios/
+       sed -i 's,system_directory = "default",system_directory = ".config/retroarch/bios"', ~/.config/retroarch/retroarch.cfg
+esac
 
 apt update
 apt upgrade

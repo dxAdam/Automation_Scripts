@@ -50,9 +50,6 @@
 #
 
 
-
-
-#
 # Checks if this script was ran as root
 #
 if [[ $EUID -ne 0 ]]; then
@@ -60,6 +57,11 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+HOMEDIR=`echo ~/`
+echo $HOMEDIR
+
+SAVEDUSER=${HOMEDIR#"/home/"}
+SAVEDUSER=${SAVEDUSER::-1}
 
 
 #
@@ -279,9 +281,12 @@ echo -e "\n\n"
 read -p "--install Retroarch? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Retroarch\n\n"
-       apt install retroarch &&
-       mkdir ~/.config/retroarch/bios
-       7z x install/retroarch_bios_pack.zip -o /home/$USER/.config/retroarch/bios/
+       apt install retroarch
+       gnome-terminal -- retroarch
+       sleep 1
+       killall retroarch
+       chown -R $SAVEDUSER ~/.config/retroarch
+       unzip install/retroarch_bios_pack.zip -d ~/.config/retroarch/bios/
        sed -i 's,system_directory = "default",system_directory = ".config/retroarch/bios"', ~/.config/retroarch/retroarch.cfg
 esac
 

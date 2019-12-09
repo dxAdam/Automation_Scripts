@@ -57,11 +57,6 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-HOMEDIR=`echo ~/`
-echo $HOMEDIR
-
-SAVEDUSER=${HOMEDIR#"/home/"}
-SAVEDUSER=${SAVEDUSER::-1}
 
 
 #
@@ -281,14 +276,16 @@ echo -e "\n\n"
 read -p "--install Retroarch? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Retroarch\n\n"
-       apt install retroarch
-       gnome-terminal -- retroarch
-       sleep 1
-       killall retroarch
-       chown -R $SAVEDUSER ~/.config/retroarch
-       unzip install/retroarch_bios_pack.zip -d ~/.config/retroarch/bios/
-       sed -i 's,system_directory = "default",system_directory = ".config/retroarch/bios"', ~/.config/retroarch/retroarch.cfg
+	add-apt-repository ppa:libretro/stable && sudo apt-get update && sudo apt-get install retroarch*
+	sudo -u $SUDO_USER retroarch
+	sleep 1
+	killall retroarch
+	unzip install/retroarch_bios_pack.zip -d ~/.config/retroarch/bios/
+	sed -i 's,system_directory = "default",system_directory = ".config/retroarch/bios"', ~/.config/retroarch/retroarch.cfg
+	chown -R $SUDO_USER ~/.config/retroarch
+	chmod -R 755 ~/.config/retroarch
 esac
+
 
 apt update
 apt upgrade

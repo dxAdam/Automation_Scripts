@@ -5,11 +5,11 @@
 
 1) Connect BeagleBoard Black to a computer running a Linux OS
 
-2) ssh into BBB with  
+2) SSH into BBB with  
   
-`ssh debian@192.168.7.2`.
+	`ssh debian@192.168.7.2`.
   
-   (the default password is `temppwd`) 
+(the default password is `temppwd`) 
   
 3) Open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
 <pre>

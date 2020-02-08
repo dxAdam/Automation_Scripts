@@ -7,7 +7,7 @@
 
 
 2) Clone this repo and enter BeagleBoard directory with  
-  
+
 	`git clone https://github.com/dxadam/Automation_Scripts && cd Automation_Scripts/BeagleBone`  
   
 
@@ -17,7 +17,7 @@
   
    (the default password is `temppwd`). 
 
-4) Open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
+4) Inside BBB open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
 <pre>
     iface usb0 inet static  
         address 192.168.7.2  
@@ -27,5 +27,4 @@
         post-up route add default gw 192.168.7.1  
         dns-nameservers 8.8.8.8
 </pre>
-  
-   This is a persistent change and only needs completed once.
+	This is a persistent change and only needs completed once.

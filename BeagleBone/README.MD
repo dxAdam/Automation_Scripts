@@ -7,15 +7,16 @@
 
 
 2) Clone this repo and enter BeagleBoard directory with  
-	`git clone https://github.com/dxadam/Automation_Scripts && cd Automation_Scripts/BeagleBone`  
+  
+		`git clone https://github.com/dxadam/Automation_Scripts && cd Automation_Scripts/BeagleBone`  
   
 
 3) Initialize local network forwarding and SSH into BBB with
   
-	`sudo ./init_beag.sh`  
+		`sudo ./init_beag.sh`  
   
    (the default password is `temppwd`). 
-  
+
 4) Open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
 <pre>
     iface usb0 inet static  

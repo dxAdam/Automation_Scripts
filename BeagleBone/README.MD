@@ -11,11 +11,12 @@
    the default password is `temppwd` 
   
 3) open the file `/etc/network/interfaces` with a text editor and add the default gateway and dns-nameserver as shown below  
+<pre>
 > iface usb0 inet static  
->>     address 192.168.7.2  
->>     netmask 255.255.255.252  
->>     network 192.168.7.0  
->>     gateway 192.168.7.1  
->>     post-up route add default gw 192.168.7.1  
->>     dns-nameservers 8.8.8.8
-
+>     address 192.168.7.2  
+>     netmask 255.255.255.252  
+>     network 192.168.7.0  
+>     gateway 192.168.7.1  
+>     post-up route add default gw 192.168.7.1  
+>     dns-nameservers 8.8.8.8
+</pre>

@@ -13,7 +13,7 @@
 
 3) Initialize local network forwarding and SSH into BBB with
   
-	`sudo ./init_beag.sh`  
+	`./init_beag.sh`  
   
    (the default password is `temppwd`) 
 

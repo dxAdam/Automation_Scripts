@@ -5,13 +5,16 @@
 
 1) Connect BeagleBoard Black to a computer running a Linux OS
 
-2) SSH into BBB with  
+
+2) Clone this repo and enter BeagleBoard directory with  
+	`cd ~ && git clone https://github.com/dxadam/Automation_Scripts && cd Au	tomation_Scripts/BeagleBone`  
   
-	`ssh debian@192.168.7.2`
+
+3) 
   
-   (the default password is `temppwd`) 
+   (the default password is `temppwd`). 
   
-3) Open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
+4) Open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
 <pre>
     iface usb0 inet static  
         address 192.168.7.2  
@@ -21,3 +24,5 @@
         post-up route add default gw 192.168.7.1  
         dns-nameservers 8.8.8.8
 </pre>
+  
+   This is a persistent change and only needs completed once.

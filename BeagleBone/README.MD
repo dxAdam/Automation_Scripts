@@ -28,11 +28,11 @@
         dns-nameservers 8.8.8.8
 </pre>
 
-5) Restart network interfaces with  
+5) Restart BBB network interfaces with  
   
 	`sudo systemctl restart networking`  
   
-6) Test Internet connectivity with  
+6) Test BBB Internet connectivity and address resoloution with  
   
 	`ping www.google.com`  
   

@@ -8,12 +8,12 @@
 
 2) Clone this repo and enter BeagleBoard directory with  
   
-		`git clone https://github.com/dxadam/Automation_Scripts && cd Automation_Scripts/BeagleBone`  
+	`git clone https://github.com/dxadam/Automation_Scripts && cd Automation_Scripts/BeagleBone`  
   
 
 3) Initialize local network forwarding and SSH into BBB with
   
-		`sudo ./init_beag.sh`  
+	`sudo ./init_beag.sh`  
   
    (the default password is `temppwd`). 
 

@@ -6,11 +6,12 @@
 1) Connect BeagleBoard Black to a computer running a Linux OS
 
 2) ssh into BBB with  
+  
 		`ssh debian@192.168.7.2`
   
    the default password is `temppwd` 
   
-3) open the file `/etc/network/interfaces` with a text editor and add the default gateway and dns-nameserver as shown below  
+3) Open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
 <pre>
     iface usb0 inet static  
         address 192.168.7.2  

@@ -26,4 +26,14 @@
         gateway 192.168.7.1  
         post-up route add default gw 192.168.7.1  
         dns-nameservers 8.8.8.8
-</pre>This is a persistent change and only needs completed once.
+</pre>
+
+5) Restart network interfaces with  
+  
+	`sudo systemctl restart networking`  
+  
+6) Test Internet connectivity with  
+  
+	`ping www.google.com`  
+  
+

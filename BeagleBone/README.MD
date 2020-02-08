@@ -1,7 +1,7 @@
 ## BeagleBone
 
 
-### Setting up internet connectivity via usb (Linux)
+### Internet via USB (Linux)
 
 1) Connect BeagleBoard Black to a computer running a Linux OS
 

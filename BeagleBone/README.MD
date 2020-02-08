@@ -26,4 +26,4 @@
         gateway 192.168.7.1  
         post-up route add default gw 192.168.7.1  
         dns-nameservers 8.8.8.8
-</pre> This is a persistent change and only needs completed once.
+</pre>This is a persistent change and only needs completed once.

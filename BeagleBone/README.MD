@@ -32,7 +32,6 @@
 5) Reboot BBB or run  
 =======
 5) Restart BBB network interfaces with  
->>>>>>> ae796b305b92460a23a0311bb02616f4466aa841
   
 	`sudo /opt/scripts/network/usb_linux_usb*`  
   

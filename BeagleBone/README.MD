@@ -14,8 +14,6 @@
   
 	`./init_beag.sh`  
   
-   (the default password is `temppwd`). 
-
 
 #### Windows
 

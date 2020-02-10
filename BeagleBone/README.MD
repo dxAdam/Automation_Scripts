@@ -28,9 +28,11 @@
         dns-nameservers 8.8.8.8
 </pre>
 
-5) Restart network interfaces with  
+5) Reboot BBB or run  
   
-	`sudo systemctl restart networking`  
+	`sudo /opt/scripts/network/usb_linux_usb*`  
+  
+   to reset network interfaces  
   
 6) Test Internet connectivity with  
   

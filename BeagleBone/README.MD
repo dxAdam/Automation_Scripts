@@ -3,7 +3,7 @@
 
 ### Internet via USB
 
-#### (Linux)
+#### Linux
 
 1) Clone this repo and enter BeagleBoard directory with  
 
@@ -15,6 +15,19 @@
 	`./init_beag.sh`  
   
    (the default password is `temppwd`). 
+
+
+#### Windows
+
+1) Open Network Connections and locate internet adapter
+
+2) Right click and select properties - enable Internet Connection Sharing under the sharing tab
+
+3) Right click BBB adapter and select properties - enter the following IPV4 manual settings:  
+  IP address: 192.168.7.1  
+  Subnet mask: 255.255.255.0  
+  Preferred DNS Server: 8.8.8.8  
+  
 
 #### Beagle Bone
 

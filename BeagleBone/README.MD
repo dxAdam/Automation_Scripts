@@ -28,10 +28,7 @@
         dns-nameservers 8.8.8.8
 </pre>
 
-<<<<<<< HEAD
 5) Reboot BBB or run  
-=======
-5) Restart BBB network interfaces with  
   
 	`sudo /opt/scripts/network/usb_linux_usb*`  
   

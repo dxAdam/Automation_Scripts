@@ -19,15 +19,16 @@
 
 #### Windows
 
-1) Open Network Connections and locate internet adapter
+1) Open Network Connections and locate Internet and BeagleBone Black adapters
 
-2) Right click and select properties - enable Internet Connection Sharing under the sharing tab
+2) Right click Internet adapter and select properties - enable Internet Connection Sharing under the Sharing tab
 
-3) Right click BBB adapter and select properties - enter the following IPV4 manual settings:  
+3) Right click BBB adapter and select properties - enter the following IPV4 manual settings:
+<pre>  
   IP address: 192.168.7.1  
   Subnet mask: 255.255.255.0  
   Preferred DNS Server: 8.8.8.8  
-  
+</pre>
 
 #### Beagle Bone
 

@@ -3,7 +3,7 @@
 
 ### Internet via USB (Linux)
 
-1) Connect BeagleBoard Black to a computer running a Linux OS
+1) Connect BeagleBoard Black to a computer running a Linux OS.
 
 
 2) Clone this repo and enter BeagleBoard directory with  
@@ -15,7 +15,7 @@
   
 	`./init_beag.sh`  
   
-   (the default password is `temppwd`) 
+   (the default password is `temppwd`). 
 
 4) Inside BBB open the file `/etc/network/interfaces` with a text editor and add the *default gateway* and *dns-nameserver* as shown below  
 <pre>
@@ -28,11 +28,11 @@
         dns-nameservers 8.8.8.8
 </pre>
 
-5) Reboot BBB or run  
+5) Reboot BBB to reset interfaces or run  
   
 	`sudo /opt/scripts/network/usb_linux_usb*`  
-  
-   to reset network interfaces  
+   
+   to make the above changes to this session.
   
 6) Test BBB Internet connectivity and address resoloution with  
   

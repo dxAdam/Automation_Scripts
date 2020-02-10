@@ -13,7 +13,7 @@
 
 3) Initialize local network forwarding and SSH into BBB with
   
-	`sudo ./init_beag.sh`  
+	`./init_beag.sh`  
   
    (the default password is `temppwd`) 
 
@@ -28,13 +28,17 @@
         dns-nameservers 8.8.8.8
 </pre>
 
+<<<<<<< HEAD
 5) Reboot BBB or run  
+=======
+5) Restart BBB network interfaces with  
+>>>>>>> ae796b305b92460a23a0311bb02616f4466aa841
   
 	`sudo /opt/scripts/network/usb_linux_usb*`  
   
    to reset network interfaces  
   
-6) Test Internet connectivity with  
+6) Test BBB Internet connectivity and address resoloution with  
   
 	`ping www.google.com`  
   

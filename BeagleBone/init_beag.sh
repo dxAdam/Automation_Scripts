@@ -15,8 +15,7 @@ sudo iptables --table nat --append POSTROUTING --out-interface $internet -j MASQ
 sudo iptables --append FORWARD --in-interface $beagle -j ACCEPT
 
 # enable forwarding
-sudo /sbin/sysctl -w net.ipv4.ip_forward=1
-sudo /sbin/sysctl -w net.ipv6.conf.all.forwarding=1
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 
 # connect to Beagle
 ssh debian@192.168.7.2

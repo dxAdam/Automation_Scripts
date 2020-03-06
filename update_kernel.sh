@@ -29,7 +29,7 @@
 
 # Copy the current kernel's config
 #
-	cp /boot/config-$(uname -r) .config
+	sudo cp /boot/config-$(uname -r) .config
 
 # Adapt old config to this kernel with
 #
@@ -45,7 +45,7 @@
 
 # Build the kernel with
 #
-	make -j `getconf _NPROCESSORS_ONLN` deb-pkg LOCALVERSION=-custom
+	make -j `getconf _NPROCESSORS_ONLN` deb-pkg
 #
 # This will take a while.
 

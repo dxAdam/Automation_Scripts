@@ -270,7 +270,7 @@ esac
 
 
 #
-# Retroarch is an is a manager for game system emulators and ROMs
+# Retroarch is a manager for game system emulators and ROMs
 #
 echo -e "\n\n"
 read -p "--install Retroarch? (y/n): " choice

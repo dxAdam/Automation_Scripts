@@ -9,14 +9,14 @@
 #   2	alsa_output.pci-0000_1e_00.3.iec958-stereo	module-alsa-card.c	s16le 2ch 44100Hz	SUSPENDED
 
 # Now set the desired device as default with
-pactl set-default-sink 0
+pactl set-default-sink 1
 
 # To make this permanent change the line '#set-default-sink output' to
-#   'set-default-sink output 0' in /etc/pulse/default.pa
-sudo sed -i -- 's/#set-default-sink output/set-default-sink output 0/g' /etc/pulse/default.pa
+#   'set-default-sink output 1' in /etc/pulse/default.pa
+sudo sed -i -- 's/#set-default-sink output/set-default-sink 1/g' /etc/pulse/default.pa
 
 # Now I like to set the volume low with 
-pacmd set-sink-volume 0 15000 # 0 is the device number from the list above and 15000 is volume level out of 512000
+pacmd set-sink-volume 1 15000 # 0 is the device number from the list above and 15000 is volume level out of 512000
 
 
 # finally I like to assign this script to a keyboard shortcut such as Ctrl+Shift+S in the ubuntu keyboard shortcuts

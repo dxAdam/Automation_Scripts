@@ -3,8 +3,7 @@
 # script: ubuntu_setup.sh
 #    
 #  Runs on a new Ubuntu installation to install and configure
-#  desired software. Designed around Ubuntu Desktop 18.04 LTS but should
-#  work with 18.10 and 19.04 as well. 
+#  desired software. Tested on Ubuntu 18.04 through 20.04
 #
 # author: Adam Grusky
 #
@@ -41,8 +40,8 @@
 #  command does and returns - useful for troubleshooting or learning purposes 
 #
 #
-#
-#  AMD/Nvidia GPU note: currently only the option to install Nvidia GPU drivers
+#  pre 20.04 graphics drivers note:
+#  Currently only the option to install Nvidia GPU drivers
 #  exists in the script because it is the same across Ubuntu 18.04, 18.10, 
 #  and 19.04. I do not have an AMD GPU to test with, but Ubuntu 18.04 LTS has
 #  the AMD open source drivers installed by default. 
@@ -150,6 +149,14 @@ add-apt-repository ppa:danielrichter2007/grub-customizer
 apt-get update
 apt-get install grub-customizer
 
+#
+# Python is a programming language.
+#
+echo -e "\n\n--installing python2"
+apt-get install python2
+apt-get install python-pip
+apt-get install python-apt
+
 
 
 #
@@ -171,7 +178,7 @@ esac
 #
 # Nvidia GPU drivers are needed in systems that contain Nvidia discrete 
 #  graphics hardware (AMD driver installation coming soon - more notes at top
-#  of script)
+#  of script) Note: 20.04 comes with drivers pre-installed.
 #
 echo -e "\n\n"
 read -p "--install Nvidia GPU drivers? (y/n): " choice
@@ -220,7 +227,7 @@ case "$choice" in
        apt update
        apt upgrade
        apt install wget gdebi-core libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
-       wget http://media.steampowered.com/client/installer/steam.deb
+       wget -E http://media.steampowered.com/client/installer/steam.deb 
        gdebi steam.deb;;
 esac
 

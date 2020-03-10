@@ -58,3 +58,16 @@
 # Reboot your computer. Check kernel version using
 #
 #	uname -r
+
+# Notes:
+#  If your gui won't boot due to graphics drivers issues or another reason
+#  but you can still get to a terminal you can try a few different things
+# 
+#  1) Uninstall your graphics drivers. If using Nvidia this would be a command like
+#
+#	sudo apt uninstall nvidia-drivers*
+#
+#  2) Uninstall the kernel you just installed with
+#
+#	sudo apt remove linux-image*
+#	sudo apt remove linux-headers*

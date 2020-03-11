@@ -175,6 +175,15 @@ esac
 
 
 
+# 
+# Flatpak is a package manager that supports Ubuntu
+#
+
+apt install flatpak && # flatpak is used to install GWE
+apt install gnome-software-plugin-flatpak &&
+
+
+
 #
 # Nvidia GPU drivers are needed in systems that contain Nvidia discrete 
 #  graphics hardware (AMD driver installation coming soon - more notes at top
@@ -207,8 +216,6 @@ case "$choice" in
 	#  sudo chmod +x gwe.sh
 	# )	
         
-	apt install flatpak && # flatpak is used to install GWE
-	apt install gnome-software-plugin-flatpak &&
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
         flatpak update &&
 	flatpak install flathub com.leinardi.gwe;;
@@ -226,9 +233,10 @@ case "$choice" in
        dpkg --add-architecture i386
        apt update
        apt upgrade
-       apt install wget gdebi-core libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
-       wget -E http://media.steampowered.com/client/installer/steam.deb 
-       gdebi steam.deb;;
+       #apt install wget gdebi-core libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
+       #wget -E http://media.steampowered.com/client/installer/steam.deb 
+       #gdebi steam.deb
+       sudo apt install steam;
 esac
 
 
@@ -240,7 +248,7 @@ echo -e "\n\n"
 read -p "--install Wine? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Wine\n\n"
-       sudo support/install_wine.sh;;
+       sudo install/install_wine.sh;;
 esac
 
 
@@ -274,24 +282,6 @@ case "$choice" in
        # start Lutris and search for and install games via the "Search Lutris.net" button
 esac
 
-
-
-#
-# Retroarch is a manager for game system emulators and ROMs
-#
-echo -e "\n\n"
-read -p "--install Retroarch? (y/n): " choice
-case "$choice" in
- y|Y ) echo -e "\n\ninstalling Retroarch\n\n"
-	add-apt-repository ppa:libretro/stable && sudo apt-get update && sudo apt-get install retroarch*
-	sudo -u $SUDO_USER retroarch
-	sleep 1
-	killall retroarch
-	unzip install/retroarch_bios_pack.zip -d ~/.config/retroarch/bios/
-	sed -i 's,system_directory = "default",system_directory = ".config/retroarch/bios"', ~/.config/retroarch/retroarch.cfg
-	chown -R $SUDO_USER ~/.config/retroarch
-	chmod -R 755 ~/.config/retroarch
-esac
 
 
 apt update

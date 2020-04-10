@@ -1,3 +1,8 @@
+# run
+#
+#	sudo chmod +x init_beag.sh
+#
+# to make executable.
 
 ifconfig
 

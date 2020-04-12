@@ -283,6 +283,15 @@ case "$choice" in
 esac
 
 
+echo -e "\n\n --installing sound input/output device, gsconnect, and hidetopbar extensions - requires gnome restart to become active"
+
+cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensions/
+
+cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensio
+ns/
+
+cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensio
+ns/
 
 apt update
 apt upgrade

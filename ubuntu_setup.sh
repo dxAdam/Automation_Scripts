@@ -49,11 +49,16 @@
 #
 
 
-# Checks if this script was ran as root
+
+#
+# Checks if this script was ran as root, which it should NOT be. This is so creating/modifying directories (as one example)
+#  do not appear under /root/...
 #
 if [[ $EUID -ne 0 ]]; then
-   echo -e "This script must be run as root!\nhint: use 'sudo !!' to run a previously entered command with root priveleges" 
-   exit 1
+  echo -e "\nRunning ubuntu_setup.sh\n"
+else
+  echo "This script should not be ran as sudo"
+  exit 1
 fi
 
 
@@ -62,8 +67,8 @@ fi
 # update currently installed packages
 #
 echo -e "\n\n--checking for updates\n\n"
-apt update &&
-apt upgrade &&
+sudo apt update &&
+sudo apt upgrade &&
 
 
 
@@ -71,7 +76,7 @@ apt upgrade &&
 # Vim is a lightweight, configurable text editor 
 #
 echo -e "\n\n--installing vim\n\n"
-apt install vim
+sudo apt install vim
 
 
 
@@ -79,7 +84,7 @@ apt install vim
 # mdadm is a Linux utility used to manage and monitor software RAID devices (and allows them to be detected by file managers) 
 #
 echo -e "\n\n--installing mdadm\n\n"
-apt install mdadm
+sudo apt install mdadm
 
 
 
@@ -87,7 +92,7 @@ apt install mdadm
 # exfat-utils gives support for exFAT formatted storage (typical of flash drives over 32GB)
 #
 echo -e "\n\n--installing exfat-utils\n\n"
-apt install exfat-utils
+sudo apt install exfat-utils
 
 
 
@@ -95,7 +100,7 @@ apt install exfat-utils
 #  useful if using GNOME desktop environment)
 #
 echo -e "\n\n--installing gnome-tweaks\n\n"
-apt install gnome-tweaks
+sudo apt install gnome-tweaks
 
 
 
@@ -104,7 +109,7 @@ apt install gnome-tweaks
 #  (useful if listening to music or monitoring a web page etc..) 
 #
 echo -e "\n\n--installing caffeine\n\n" 
-apt-get install caffeine
+sudo apt-get install caffeine
 
 
 
@@ -112,7 +117,7 @@ apt-get install caffeine
 # Psensor displays different hardware sensor readings
 #
 echo -e "\n\n--installing psensor\n\n"
-apt-get install psensor
+sudo apt-get install psensor
 
 
 
@@ -120,7 +125,7 @@ apt-get install psensor
 # net-tools allows the use of networking information commands like "ifconfig"
 #
 echo -e "\n\n--installing net-tools\n\n"
-apt-get install net-tools
+sudo apt-get install net-tools
 
 
 
@@ -128,7 +133,7 @@ apt-get install net-tools
 # htop shows system resources and processes in a terminal environment
 #
 echo -e "\n\n--installing htop\n\n"
-apt-get install htop
+sudo apt-get install htop
 
 
 
@@ -136,7 +141,7 @@ apt-get install htop
 # Discord is a popular voice/chat application
 #
 echo -e "\n\n--installing discord\n\n"
-snap install discord
+sudo snap install discord
 
 
 
@@ -145,9 +150,9 @@ snap install discord
 #  (useful when multiple bootable partitions exist on a disk)
 #
 echo -e "\n\n--installing grub-customizer\n\n"
-add-apt-repository ppa:danielrichter2007/grub-customizer
-apt-get update
-apt-get install grub-customizer
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get update
+sudo apt-get install grub-customizer
 
 
 
@@ -155,9 +160,9 @@ apt-get install grub-customizer
 # Python is a programming language.
 #
 echo -e "\n\n--installing python2"
-apt-get install python2
-apt-get install python-pip
-apt-get install python-apt
+sudo apt-get install python2
+sudo apt-get install python-pip
+sudo apt-get install python-apt
 
 
 
@@ -183,9 +188,9 @@ case "$choice" in
  y|Y ) echo -e "\n\n--installing dropbox\n\n"
        cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf - &&
        # we need to run     ~/dropbox-dist/dropboxd   in another terminal   -- will do in after_reboot.sh
-       touch /etc/rc.local
+       sudo touch /etc/rc.local
        bash -c "echo "/home/$USER/.dropbox-dist/dropboxd" >> /etc/rc.local" # configures to start service on boot
-       chmod +x /etc/rc.local;;
+       sudo chmod +x /etc/rc.local;;
 esac
 
 
@@ -194,8 +199,8 @@ esac
 # Flatpak is a package manager that supports Ubuntu
 #
 
-apt install flatpak && # flatpak is used to install GWE
-apt install gnome-software-plugin-flatpak &&
+sudo apt install flatpak && # flatpak is used to install GWE
+sudo apt install gnome-software-plugin-flatpak &&
 
 
 
@@ -207,9 +212,9 @@ apt install gnome-software-plugin-flatpak &&
 echo -e "\n\n"
 read -p "--install Nvidia GPU drivers? (y/n): " choice
 case "$choice" in 
-  y|Y ) add-apt-repository ppa:graphics-drivers/ppa &&
-	apt purge --autoremove '*nvidia*' && 
-	ubuntu-drivers autoinstall && # installs recommended nvidia drivers for detected hardware
+  y|Y ) sudo add-apt-repository ppa:graphics-drivers/ppa &&
+	sudo apt purge --autoremove '*nvidia*' && 
+	sudo ubuntu-drivers autoinstall && # installs recommended nvidia drivers for detected hardware
 
 	# detected hardware and recommended drivers can be displayed with 
         # the "ubuntu-drivers devices" command
@@ -231,9 +236,9 @@ case "$choice" in
 	#  sudo chmod +x gwe.sh
 	# )	
         
-	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
-        flatpak update &&
-	flatpak install flathub com.leinardi.gwe;;
+	sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo &&
+        sudo flatpak update &&
+	sudo flatpak install flathub com.leinardi.gwe;;
 esac
 
 
@@ -245,9 +250,9 @@ echo -e "\n\n"
 read -p "--install Steam? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\n--installing steam\n\n"
-       dpkg --add-architecture i386
-       apt update
-       apt upgrade
+       sudo dpkg --add-architecture i386
+       sudo apt update
+       sudo apt upgrade
        #apt install wget gdebi-core libgl1-mesa-dri:i386 libgl1-mesa-glx:i386
        #wget -E http://media.steampowered.com/client/installer/steam.deb 
        #gdebi steam.deb
@@ -275,9 +280,9 @@ echo -e "\n\n"
 read -p "--install Vulkan? (required for some games) (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Vulkan\n\n"
-       apt install vulkan-utils
-       apt install libvulkan1 libvulkan1:i386                       # nvidia
-       #apt install mesa-vulkan-drivers mesa-vulkan-drivers:i386    # amd/intel
+       sudo apt install vulkan-utils
+       sudo apt install libvulkan1 libvulkan1:i386                       # nvidia
+       apt install mesa-vulkan-drivers mesa-vulkan-drivers:i386         # amd/intel
        ;;
 esac
 
@@ -290,9 +295,9 @@ echo -e "\n\n"
 read -p "--install Lutris? (y/n): " choice
 case "$choice" in
  y|Y ) echo -e "\n\ninstalling Lutris\n\n"
-       add-apt-repository ppa:lutris-team/lutris
-       apt-get update
-       apt-get install lutris;;
+       sudo add-apt-repository ppa:lutris-team/lutris
+       sudo apt-get update
+       sudo apt-get install lutris;;
 
        # start Lutris and search for and install games via the "Search Lutris.net" button
 esac
@@ -308,9 +313,9 @@ ns/
 cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensio
 ns/
 
-apt update
-apt upgrade
-apt autoremove # removes dependencies no longer needed
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove # removes dependencies no longer needed
 
 
 

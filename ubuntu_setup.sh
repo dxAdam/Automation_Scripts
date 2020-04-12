@@ -149,6 +149,8 @@ add-apt-repository ppa:danielrichter2007/grub-customizer
 apt-get update
 apt-get install grub-customizer
 
+
+
 #
 # Python is a programming language.
 #
@@ -156,6 +158,19 @@ echo -e "\n\n--installing python2"
 apt-get install python2
 apt-get install python-pip
 apt-get install python-apt
+
+
+
+#
+# Visual Studio Code is a light weight coding IDE / text editor
+#
+echo -e "\n\n--installing visual studio code"
+sudo apt update
+sudo apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt update
+sudo apt install code
 
 
 

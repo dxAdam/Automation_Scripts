@@ -34,20 +34,23 @@
 <pre>
     iface usb0 inet static  
         address 192.168.7.2  
-        netmask 255.255.255.252  
-        network 192.168.7.0  
+        netmask 255.255.255.0 
         gateway 192.168.7.1  
-        post-up route add default gw 192.168.7.1  
         dns-nameservers 8.8.8.8
 </pre>
 
-2) Reboot BBB to reset interfaces or run  
-  
-	`sudo /opt/scripts/network/usb_linux_usb*`  
+
+2) Add line
+
+	nameserver 8.8.8.8
+
+   to /etc/resolv.conf
+
+
+3) Reboot BBB    
    
-   to make the above changes to this session.
   
-3) Test BBB Internet connectivity and address resolution with  
+4) Test BBB Internet connectivity and address resolution with  
   
 	`ping www.google.com`  
   

@@ -5,7 +5,6 @@
 #
 
 
-
 if [ "$#" -ne 2 ]; then
     echo "This script needs your git user.name and user.email as arguments!"
 fi

@@ -313,6 +313,10 @@ ns/
 cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensio
 ns/
 
+
+
+sudo rm /etc/apt/sources.list.d/*
+
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove # removes dependencies no longer needed

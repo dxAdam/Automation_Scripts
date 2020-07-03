@@ -2,11 +2,12 @@
 
 # Script containing the steps and dependencies required to build a kernel.
 
-# The script will automatically download the latest kernel. But you can 
-# downloaded a different kenel by setting the version below and
-# commenting/uncommenting lines further below.
+# The script will install the kernel version specified below. But the 
+# script can easily be modified to download the most recent kernel by
+# commenting/uncommenting lines below.
 #
-#VERSION=5.6-rc4
+
+VERSION=5.6-rc4
 
 # Install dependencies with
 #
@@ -22,14 +23,20 @@
 # Download kernel from https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git 
 # or use
 #
-	git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
-	cd linux
-	#wget https://git.kernel.org/torvalds/t/linux-$(VERSION).tar.gz
-	#cd linux-$(VERSION)
+	#AUTO
+	#git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+	#cd linux
+	
+	#MANUAL
+	wget https://git.kernel.org/torvalds/t/linux-$VERSION.tar.gz
+	cd linux-$VERSION
+	tar xvf linux-$VERSION.tar.gz
+
 
 # Copy the current kernel's config
 #
 	sudo cp /boot/config-$(uname -r) .config
+
 
 # Adapt old config to this kernel with
 #
@@ -43,21 +50,29 @@
 #
 	make clean
 
+
 # Build the kernel with
 #
 	make -j `getconf _NPROCESSORS_ONLN` deb-pkg
 #
 # This will take a while.
 
+
 # Finally install the kernel with
 #
 	cd ../
-	sudo dpkg -i linux*.deb
+
+	#AUTO
+	#sudo dpkg -i linux*.deb
+
+	#MANUAL
+	sudo dpkg -i linux-$VERSION.deb
 
 
 # Reboot your computer. Check kernel version using
 #
 #	uname -r
+
 
 # Notes:
 #  If your gui won't boot due to graphics drivers issues or another reason

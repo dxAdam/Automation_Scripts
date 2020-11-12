@@ -291,19 +291,6 @@ case "$choice" in
        # start Lutris and search for and install games via the "Search Lutris.net" button
 esac
 
-
-echo -e "\n\n --installing sound input/output device, gsconnect, and hidetopbar extensions - requires gnome restart to become active"
-
-cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensions/
-
-cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensio
-ns/
-
-cp -r install/gsconnect@andyholmes.github.io ~/.local/share/gnome-shell/extensio
-ns/
-
-
-
 sudo rm /etc/apt/sources.list.d/*
 
 sudo apt update

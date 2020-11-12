@@ -18,3 +18,6 @@ echo "alias cpubench='/home/$USER/.bash_alias_scripts/cpubench.sh'" >> /home/$US
 echo "alias gwe='/home/$USER/.bash_alias_scripts/gwe.sh'" >> /home/$USER/.bashrc
 echo "alias git setup='/home/$USER/.bash_alias_scripts/git_setup.sh'" >> /home/$USER/.bashrc
 echo "alias reset sound='/home/$USER/.bash_alias_scripts/resetsound.sh'" >> /home/$USER/.bashrc
+
+
+echo "alias python='python3'" >> /home/$USER/.bashrc

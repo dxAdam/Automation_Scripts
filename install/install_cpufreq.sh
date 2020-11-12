@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Install the extension from GitHub"
-echo "Usage: install.sh [BRANCH_NAME]"
-echo "Default branch is master"
-echo "Dependencies: unzip"
-
 # Check unzip 
 command -v unzip >/dev/null 2>&1 || { echo "Error: Please install unzip"; exit 1; } 
 

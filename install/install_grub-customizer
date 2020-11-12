@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#
+# Will not find library for Ubuntu 19 or 20 - check version
+#
+
+VERSION_ID=$(lsb_release -sr)
+
+VERSION_INT=$(echo $VERSION_ID | cut -c1-2)
+
+
+if [ $VERSION_INT -ge 19 ]; then
+echo "ERROR: grub-customizer repos not found for Ubuntu $VERSION_ID"
+exit
+fi
+
+#
+# grub-customizer allows customization of the GNU GRUB boot loader
+#  (useful when multiple bootable partitions exist on a disk)
+#
+echo -e "\n\n--installing grub-customizer\n\n"
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt-get update
+sudo apt-get install grub-customizer
+

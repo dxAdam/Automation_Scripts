@@ -146,17 +146,6 @@ sudo snap install discord
 
 
 #
-# grub-customizer allows customization of the GNU GRUB boot loader
-#  (useful when multiple bootable partitions exist on a disk)
-#
-echo -e "\n\n--installing grub-customizer\n\n"
-sudo add-apt-repository ppa:danielrichter2007/grub-customizer
-sudo apt-get update
-sudo apt-get install grub-customizer
-
-
-
-#
 # Python is a programming language.
 #
 echo -e "\n\n--installing python2"

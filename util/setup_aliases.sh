@@ -4,7 +4,7 @@
 # Move aliased scripts to ~/.bash_alias_scripts
 #
 
-#mkdir ~/.bash_alias_scripts
+mkdir ~/.bash_alias_scripts
 
 cp check_raid.sh ~/.bash_alias_scripts
 cp cpubench.sh ~/.bash_alias_scripts

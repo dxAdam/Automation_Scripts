@@ -5,5 +5,4 @@
 
 echo -e "\n\nusage: ./cpubench <num-threads>\n\n"
 
-
-sysbench --test=cpu --cpu-max-prime=20000 --num-threads=$1 run
+sysbench cpu --cpu-max-prime=20000 --threads=$1 run

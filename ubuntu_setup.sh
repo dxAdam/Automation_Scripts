@@ -87,6 +87,13 @@ echo -e "\n\n--installing mdadm\n\n"
 sudo apt install mdadm
 
 
+#
+# unrar is a Linux utility used to extract .rar files 
+#
+echo -e "\n\n--installing unrar\n\n"
+sudo apt install unrar
+
+
 
 #
 # exfat-utils gives support for exFAT formatted storage (typical of flash drives over 32GB)

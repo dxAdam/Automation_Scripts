@@ -25,3 +25,11 @@ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 
 # connect to Beagle
 ssh debian@192.168.7.2
+
+
+
+#
+# Once logged into the BB set up the internet-over-usb settings
+#  sudo -i
+#  route add default gw 192.168.7.1
+#  echo "nameserver 8.8.8.8" >> /etc/resolv.conf

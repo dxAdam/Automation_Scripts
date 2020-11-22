@@ -1,0 +1,17 @@
+Set up wireless adapter - Exploring BB page 566
+
+sudo commandctl
+
+enable wifi
+
+scan wifi
+
+services
+
+agent on
+
+connect <from services>
+
+password
+
+exit

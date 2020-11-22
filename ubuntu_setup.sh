@@ -94,6 +94,19 @@ echo -e "\n\n--installing unrar\n\n"
 sudo apt install unrar
 
 
+#
+# nmap is a network mapping tool. Example: nmap -T4 -F 192.168.1.*
+#
+echo -e "\n\n--installing nmap\n\n"
+sudo apt install nmap
+
+
+#
+# tree is a tool for viewing directory structures
+#
+echo -e "\n\n--installing tree\n\n"
+sudo apt install tree
+
 
 #
 # exfat-utils gives support for exFAT formatted storage (typical of flash drives over 32GB)

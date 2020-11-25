@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# fullbuildcpp - processes a .c or cpp file one step at a time
+#
+
+
+if [ $# -eq 0 ]; then
+  echo "No argument. Usage is:"
+  echo " ./fullbuild filename.cpp"
+  exit 2
+fi
+
+if [ ${1: -2} == ".c" ]; then
+  echo "gcc -E $1 > processedtmp.c"
+  gcc -E $1 > processedtmp.c
+
+  file=${1:0:-2}
+
+  echo "gcc -S processedtmp.c -o $file.s"
+  gcc -S processedtmp.c -o $file.s
+
+  echo "gcc -c $file.s"
+  gcc -c $file.s
+
+  echo "gcc $file.o -o $file"
+  gcc $file.o -o $file
+
+elif [ ${1: -4} == ".cpp" ]; then
+  echo "g++ -E $1 > processedtmp.cpp"
+  gcc -E $1 > processedtmp.cpp
+
+  file=${1:0:-4}
+
+  echo "g++ -S processedtmp.cpp -o $file.s"
+  g++ -S processedtmp.cpp -o $file.s
+
+  echo "g++ -c $file.s"
+  g++ -c $file.s
+ 
+  echo "g++ $file.o -o $file"
+  g++ $file.o -o $file 
+else
+  echo "Argument must be a c/c++ file"
+fi
+
+
+echo "Compilation process complete"
+#try objdump -D $file.o

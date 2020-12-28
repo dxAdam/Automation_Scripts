@@ -5,7 +5,7 @@
 #### Run after a fresh install of Ubuntu to quickly set up commonly used applications and tools. 
 
 ### after_reboot.sh
-#### Run after ubuntu_setup.sh and a system reboot has been completed. Mostly only useful if installing the Nvidia overclocking utility.
+#### Run after ubuntu_setup.sh and a system reboot have been completed. Mostly only useful if installing the Nvidia overclocking utility.
 
 
 ### update_kernel.sh

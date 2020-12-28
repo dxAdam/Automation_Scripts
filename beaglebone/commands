@@ -25,6 +25,7 @@ cpufreq-set -g ondemand              #set cpu governor to ondemand
 cpufreq-set -f 600Mhz                #set cpu freq to 600Mhz
 du -hs <dir>                         #see size of directory
 du -h --max-depth=1 <dir>
+ls -ld -- */                         # list only directories
 
 # connmanctl
 #

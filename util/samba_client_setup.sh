@@ -19,4 +19,4 @@ sudo bash -c "echo 'password=$password' >> /root/.smbcredentials"
 sudo mount.cifs -v //192.168.1.102/smb-shared /media/samba --verbose -o user=$username,password=$password,domain=WORKGROUP
 
 # auto-mount on boot by adding entry to /etc/fstab
-sudo bash -c "echo '//$smbip/smb-shared /media/samba cifs uid=0,credentials=/root/.smbcredentials,vers=3.0' >> /etc/fstab"
+sudo bash -c "echo '//$smbip/smb-shared /media/samba cifs uid=$username,credentials=/root/.smbcredentials,vers=3.0' >> /etc/fstab"

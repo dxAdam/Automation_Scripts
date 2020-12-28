@@ -1,28 +1,28 @@
 dpkg-query -l
+dpkg-reconfigure tzdata
+dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n   #sort installed packages by size
 nmap -T4 -F 192.168.1.*
 cal
-dpkg-reconfigure tzdata
 env
 grep -rn /<dir> -e "searchstring"
-sudo find /<dir> -name iostream
-less -5 /var/log/messages
-sudo hdparm -tT /dev/xxx /dev/xxx
-cat /proc/meminfo
+find <dir2search1> <dir2search2> -name <file/dir to find>
 journalctl -f
+less -5 /var/log/messages
+hdparm -tT /dev/xxx /dev/xxx
+cat /proc/meminfo
+cat /proc/cpuinfo (uptime, interrupts, version ..)
 systemctl isolate multi-user.target  #switch to headless target mode
 systemctl isolate graphical.target   #switch back to headful graphical mode
 passwd root                          #enable root user in debian
 stat <file>                          #see file info
 df -T                                #overview of filesystems 
 vi /etc/issue                        #change banner before ssh login
-find <dir> -name <filename>          #search <dir> for <filename>
 ./hello &                            #run hello in the background
 watch dmesg                          #watch kernel messages
-watch -n 1 ps a                      #watch a command in a regular interval
+watch -n 1 <command>                 #watch a command in a regular interval
 cpufreq-info                         #sudo apt install cpufrequtils
 cpufreq-set -g ondemand              #set cpu governor to ondemand
 cpufreq-set -f 600Mhz                #set cpu freq to 600Mhz
-dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n   #sort installed packages by size
 du -hs <dir>                         #see size of directory
 du -h --max-depth=1 <dir>
 

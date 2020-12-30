@@ -22,4 +22,4 @@ echo "alias dpkg-sort='/home/$USER/.alias_scripts/dpkg-sort.sh'" >> /home/$USER/
 
 echo "alias python='python3'" >> /home/$USER/.bashrc
 
-source /home/$USER/.bashrc
+echo -e "\nrun\n     source ~/.bashrc"

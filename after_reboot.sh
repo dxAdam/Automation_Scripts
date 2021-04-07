@@ -21,7 +21,6 @@ fi
 
 
 # enable overclocking / fan control of GPU ... additional reboot required to take effect
-flatpak update &&
 sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
 
 

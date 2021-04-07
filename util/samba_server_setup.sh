@@ -1,13 +1,24 @@
 #!/bin/bash
 
-sudo apt install samba samba-common-bin
+apt install samba samba-common-bin
 
-sudo mkdir /samba
-sudo chmod -R 777 /samba
+mkdir /samba
 
 echo -e '\nEnter Samba username: '
 read username
 
-sudo bash -c "echo -e '[smb-shared]\npath=/samba\nbrowsable=yes\nwritable=yes\ncreate mask=0644\ndirectory mak=0755\nforce user=$username' >> /etc/samba/smb.conf"
+adduser $username
 
-sudo systemctl restart smbd.service
+smbpasswd -a $username
+
+echo -e '\Enter shared drive name: '
+read drivename
+
+echo -e '\Enter shared drive mount path: '
+read drivepath
+
+bash -c "echo -e '[$drivename]\npath=$drivepath\nbrowsable=yes\nwritable=yes\ncreate mask=0644\ndirectory mask=0755\nforce user=$username' >> /etc/samba/smb.conf"
+
+chown -R $username:$username $drivepath
+
+systemctl restart smbd.service

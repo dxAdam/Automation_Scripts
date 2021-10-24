@@ -17,8 +17,8 @@ cd /sys/class/net && select beagle in *; do break; done
 echo $beagle selected
 
 # set up forwarding in iptables
-sudo iptables --table nat --append POSTROUTING --out-interface $internet -j MASQUERADE
-sudo iptables --append FORWARD --in-interface $beagle -j ACCEPT
+sudo iptables --table nat -I POSTROUTING --out-interface $internet -j MASQUERADE
+sudo iptables -I FORWARD --in-interface $beagle -j ACCEPT
 
 # enable forwarding
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"

@@ -24,4 +24,8 @@ then
     # should automatically connect if a wireless adapter is installed
 fi
 
+sudo apt-get update
+sudo apt-get install build-essential python-dev python-setuptools python-pip python-smbus -y
 
+sudo pip install Adafruit_BBIO
+pip install numpy

@@ -17,6 +17,11 @@ void intHandler() {
 
 int main(int argc, char const* argv[])
 {
+        if(argc < 2){
+	    printf("ERROR - client.c requires a server IP address as an agrument\n");
+	    exit(-1);
+	}
+
         struct sigaction act;
 	act.sa_handler = intHandler;
 	sigaction(SIGINT, &act, NULL);
@@ -37,7 +42,7 @@ int main(int argc, char const* argv[])
 
 	    // Convert IPv4 and IPv6 addresses from text to binary
 	    // form
-	    if (inet_pton(AF_INET, "192.168.1.200", &serv_addr.sin_addr)
+	    if (inet_pton(AF_INET, "192.168.1.31", &serv_addr.sin_addr)
 		<= 0) {
 		printf(
 			"\nInvalid address/ Address not supported \n");

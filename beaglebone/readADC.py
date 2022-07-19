@@ -3,7 +3,7 @@ import time
 from array import *
 import numpy as np
 
-rows=32
+rows=16
 cols=8
 
 values=np.float16([0]*cols*rows)
@@ -23,7 +23,20 @@ while (i < rows):
     values[i*cols+6] = ADC.read("AIN6")
     values[i*cols+7] = ADC.read("AIN7")
 
-    print(values[i*cols:i*cols+8])
+    print(values[i*cols:i*cols+cols])
     
     time.sleep(0.5)
     i = i + 1
+
+i = 0
+while(i < cols):
+    print(np.transpose(values))
+    i = i + 1
+
+#print("AVG")
+#print("[", end='')
+#for x in range(0, cols):
+#    print(np.average(values[x*cols+1:x*cols+cols+1]), end='')
+#    if(x < cols-1):
+#        print(" ", end='')
+#print("]")

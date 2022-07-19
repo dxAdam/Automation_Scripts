@@ -6,7 +6,9 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#define PORT 8090
+#include <sys/types.h>
+#include <sys/wait.h>
+#define PORT 8080
 int main(int argc, char const* argv[])
 {
     int server_fd, new_socket, valread;
@@ -42,24 +44,25 @@ int main(int argc, char const* argv[])
         exit(EXIT_FAILURE);
     }
     while(1){
-    if (listen(server_fd, 3) < 0) {
-        perror("listen");
-        exit(EXIT_FAILURE);
-    }
-    if ((new_socket
-         = accept(server_fd, (struct sockaddr*)&address,
-                  (socklen_t*)&addrlen))
-        < 0) {
+        if (listen(server_fd, 3) < 0) {
+            perror("listen");
+            exit(EXIT_FAILURE);
+        }
+        if ((new_socket
+             = accept(server_fd, (struct sockaddr*)&address,
+                      (socklen_t*)&addrlen))< 0) {
         perror("accept");
         exit(EXIT_FAILURE);
-    }
-    
-    valread = read(new_socket, buffer, 1024);
-    printf("%s\n", buffer);
-    send(new_socket, buffer, strlen(buffer), 0);
-    memset(buffer,0,1024);    
-    }
+        }
 
+        if(fork() == 0) { 
+            valread = read(new_socket, buffer, 1024);
+            printf("%s\n", buffer);
+            send(new_socket, buffer, strlen(buffer), 0);
+            //memset(buffer,0,1024);    
+	    exit(0);
+        }
+    }
     
   // closing the connected socket
     close(new_socket);

@@ -28,15 +28,13 @@ while (i < rows):
     time.sleep(0.5)
     i = i + 1
 
-i = 0
-while(i < cols):
-    print(np.transpose(values))
-    i = i + 1
+values.shape = (rows, cols)
 
-#print("AVG")
-#print("[", end='')
-#for x in range(0, cols):
-#    print(np.average(values[x*cols+1:x*cols+cols+1]), end='')
-#    if(x < cols-1):
-#        print(" ", end='')
-#print("]")
+print("AVG\n[", end='')
+
+for i in range(0, cols):
+    print("{:0.4f}".format(np.average(np.transpose(values)[i])), end='')
+    if(i<cols-1):
+        print(" ", end='')
+    else:
+        print("]")

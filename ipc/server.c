@@ -56,18 +56,17 @@ int main(int argc, char const* argv[])
         }
 
         if(fork() == 0) { 
+	    close(server_fd);
             valread = read(new_socket, buffer, 1024);
             printf("%s\n", buffer);
             send(new_socket, buffer, strlen(buffer), 0);
-            memset(buffer,0,1024);    
 	    close(new_socket);
 	    exit(0);
         }
     }
-    
-  // closing the connected socket
-    //close(new_socket);
-  // closing the listening socket
+   
+    //closing the listening socket
+    close(new_socket);
     shutdown(server_fd, SHUT_RDWR);
     return 0;
 }

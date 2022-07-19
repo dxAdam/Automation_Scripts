@@ -55,7 +55,8 @@ int main(int argc, char const* argv[])
 		printf("\nConnection Failed \n");
 		return -1;
 	    }
-            
+	    char line[20];
+            memset(line, 0, 20); 
 	    //fflush(stdin);
 	    //fflush(stdout);
             fgets(line, sizeof(line), stdin);

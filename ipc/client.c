@@ -42,7 +42,7 @@ int main(int argc, char const* argv[])
 
 	    // Convert IPv4 and IPv6 addresses from text to binary
 	    // form
-	    if (inet_pton(AF_INET, "192.168.1.31", &serv_addr.sin_addr)
+	    if (inet_pton(AF_INET, argv[1], &serv_addr.sin_addr)
 		<= 0) {
 		printf(
 			"\nInvalid address/ Address not supported \n");
@@ -56,9 +56,8 @@ int main(int argc, char const* argv[])
 		return -1;
 	    }
             
-            char line[20];
-	    fflush(stdin);
-	    fflush(stdout);
+	    //fflush(stdin);
+	    //fflush(stdout);
             fgets(line, sizeof(line), stdin);
             sscanf(line, "%19s", &msg);
 	
